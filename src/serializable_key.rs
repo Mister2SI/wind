@@ -12,7 +12,7 @@ pub struct SerializablePublicKey {
 
 impl SerializablePublicKey {
     /// Convert an `RsaPublicKey` into a serializable struct.
-    fn from_rsa_key(public_key: &RsaPublicKey) -> Self {
+    pub fn from_rsa_key(public_key: &RsaPublicKey) -> Self {
         let der_encoded = public_key.to_pkcs1_der().unwrap().as_ref().to_vec();
         Self {
             key_data: der_encoded,
@@ -20,7 +20,7 @@ impl SerializablePublicKey {
     }
 
     /// Convert back to an `RsaPublicKey`.
-    fn to_rsa_key(&self) -> RsaPublicKey {
+    pub fn to_rsa_key(&self) -> RsaPublicKey {
         RsaPublicKey::from_pkcs1_der(&self.key_data).expect("Failed to parse public key")
     }
 }

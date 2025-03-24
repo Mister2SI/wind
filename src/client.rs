@@ -1,7 +1,6 @@
+use rsa::{RsaPrivateKey, RsaPublicKey};
 use std::io::ErrorKind;
 use std::net::TcpStream;
-
-use rsa::{RsaPrivateKey, RsaPublicKey};
 
 /// The entry point for the client
 pub fn client(addr: &String) -> std::result::Result<(), ()> {
